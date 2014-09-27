@@ -3,7 +3,27 @@ jvisualvm playground
 
 本工程演示`jvisualvm`的使用。
 
-1. `sampling`获取到`CPU`性能数据时的实际特点和要注意的问题。
+`sample` `CPU`操作的特点
+-------------------------------
+
+`sample` `CPU`的实时数据有`CPU Sample`和`Thread CPU Time`2个Tab。
+
+### `CPU Sample` Tab
+
+信息显示有4列：
+
+- Hot Spots - Method
+- Self time\[%]
+- Self time
+- Self time(CPU)
+
+可以看到实时数据只能看到方法的Self time（自用时间），不能直接看到包含调用子方法的执行时间（这对业务流程分析往往更有直接意义）。
+
+点包含调用子方法的方法执行时间可以
+
+只有线程处于处理时，才能`sample`到数据。关于这一点见演示示例[com.oldratlee.jvisualvm.Testee](src/main/java/com/oldratlee/jvisualvm/Testee.java)。
+
+### `Thread CPU Time` Tab
 
 相关资料
 -----------------------
