@@ -6,10 +6,10 @@ import java.util.Date;
  * @author Jerry Lee
  */
 public class Testee {
-    static long countTimeIn100ms = 0;
+    static long countTimeIn500ms = 0;
 
     public static void main(String[] args) throws Exception {
-        countTimeIn100ms = guessCountTimeIn100ms();
+        countTimeIn500ms = guessCountTimeIn500ms();
 
         Thread runAndSleepTask = new Thread(new RunAndSleepTask(), "RunAndSleepTask");
         Thread runAndWaitTask = new Thread(new RunAndWaitTask(), "RunAndWaitTask");
@@ -28,11 +28,11 @@ public class Testee {
         public void run() {
             String name = this.getClass().getSimpleName();
             while (true) {
-                for (long i = 0; i < countTimeIn100ms; i++) {
+                for (long i = 0; i < countTimeIn500ms; i++) {
                 }
                 System.out.println(name + ": " + new Date());
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -45,12 +45,12 @@ public class Testee {
         public void run() {
             String name = this.getClass().getSimpleName();
             while (true) {
-                for (long i = 0; i < countTimeIn100ms; i++) {
+                for (long i = 0; i < countTimeIn500ms; i++) {
                 }
                 try {
                     System.out.println(name + ": " + new Date());
                     synchronized (this) {
-                        this.wait(100);
+                        this.wait(500);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -64,7 +64,7 @@ public class Testee {
         public void run() {
             String name = this.getClass().getSimpleName();
             while (true) {
-                for (long i = 0; i < countTimeIn100ms; i++) {
+                for (long i = 0; i < countTimeIn500ms; i++) {
                 }
                 System.out.println(name + ": " + new Date());
                 try {
@@ -79,7 +79,7 @@ public class Testee {
     /**
      * @return 100ms可以做{@code long}的计数次数。
      */
-    static long guessCountTimeIn100ms() {
+    static long guessCountTimeIn500ms() {
         System.out.println("start guess.");
 
         long count = 1000L * 1000 * 1000;
@@ -96,6 +96,6 @@ public class Testee {
         long duration = System.currentTimeMillis() - tick;
         System.out.printf("1G times count take %d ms.\n", duration);
 
-        return count * 100 / duration;
+        return count * 500 / duration;
     }
 }

@@ -23,6 +23,10 @@ jvisualvm playground
 
 只有线程处于处理时，才能`sample`到数据。关于这一点见演示示例[com.oldratlee.jvisualvm.Testee](src/main/java/com/oldratlee/jvisualvm/Testee.java)。
 
+```bash
+mvn compile exec:java -Dexec.mainClass=com.oldratlee.jvisualvm.Testee
+```
+
 ### `Thread CPU Time` Tab
 
 相关资料
